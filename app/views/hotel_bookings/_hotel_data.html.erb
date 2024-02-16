@@ -1,0 +1,17 @@
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Location</th>
+    <th>Actions</th>
+  </tr>
+  <% hotels.each do |hotel| %>
+    <tr>
+      <td><%= hotel.name %></td>
+      <td><%= hotel.location %></td>
+      <td><%= link_to "Booking room", hotel_booking_url(hotel)%> 
+      | <%= link_to "List of booked room", list_of_booked_room_path(hotel_id: hotel)%></td>
+      
+    </tr>
+  <% end %>
+</table>

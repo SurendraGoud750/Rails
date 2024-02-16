@@ -5,6 +5,15 @@ class HotelBookingsController < ApplicationController
 	end
 
 
+	def filter_by_location
+       @hotels = Hotel.where(location: params[:location])
+       respond_to do |format|
+		  format.js {render layout: false} 
+		end
+
+	end 
+
+
 	def show
 		@hotel = Hotel.find(params[:id])
 		@hotel_rooms = HotelRoom.where(hotel_id: @hotel)
@@ -45,7 +54,7 @@ class HotelBookingsController < ApplicationController
 	end 
 
 	def list_of_booked_room
-		@hotel_bookings = HotelBooking.where(hotel_id: params[:hotel_id])
+		@hotel_bookings = HotelBooking.where(hotel_id: params[:hotel_id], user_id: 1)
 	end 
 
 	private 

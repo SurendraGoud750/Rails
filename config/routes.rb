@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :hotel_bookings
 
   get 'list_of_booked_room', to: "hotel_bookings#list_of_booked_room"
+  get 'filter_by_location',  to: "hotel_bookings#filter_by_location"
 end

@@ -3,34 +3,21 @@
 <h2>Hotels</h2>
 <h3>Filter by location</h3>
 <%= select_tag(
-  'location_stage',
+  'location',
   options_for_select(
-    @hotels.map{ |p| [p.location, p.id] }
+    @hotels.map{ |p| [p.location, p.location] }
   ),
   prompt: "Filter by Location",
   id: 'location_dropdown',
   data: {
     remote: true,
-    url: '/',
+    url: '/filter_by_location',
     method: 'get'
   }
 ) %>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Location</th>
-    <th>Actions</th>
-  </tr>
-  <% @hotels.each do |hotel| %>
-    <tr>
-      <td><%= hotel.name %></td>
-      <td><%= hotel.location %></td>
-      <td><%= link_to "Booking room", hotel_booking_url(hotel)%> 
-      | <%= link_to "List of booked room", list_of_booked_room_path(hotel_id: hotel)%></td>
-      
-    </tr>
-  <% end %>
-</table>
+<div id="hotels">
+  <%= render 'hotel_bookings/hotel_data', hotels: @hotels %>
+</div>
 
 
