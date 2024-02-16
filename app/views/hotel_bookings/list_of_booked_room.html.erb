@@ -1,0 +1,25 @@
+<table>
+  <tr>
+    <th>Hotel Name</th>
+    <th>Hotel Location</th>
+    <th>Room</th>
+    <th>Status</th>
+    <th>Check In</th>
+    <th>Actions</th>
+  </tr>
+  <% @hotel_bookings.each do |hotel_booking| %>
+    <tr>
+      <td><%= hotel_booking.hotel.name %></td>
+      <td><%= hotel_booking.hotel.location %></td>
+      <td><%= hotel_booking.hotel_room.name_of_room %></td>
+      <td><%= hotel_booking.status %></td>
+      <td><%= hotel_booking.check_in_date %></td>
+      <td><%= link_to "Edit booking", edit_hotel_booking_path(hotel_booking.hotel, hotel_booking_id: hotel_booking.id)%> |
+        <%= link_to 'cancel', hotel_booking_path(hotel_booking),
+  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+
+      </td>
+      
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,16 @@
+<%= form_for hotel_booking do |f| %>
+   <%= hidden_field_tag :hotel_id, @hotel.id %>   <p>
+   <%= f.label :rooms %>
+   <%= f.select :hotel_room_id, hotel_rooms.all.collect { |p| [ p.name_of_room, p.id ] }, include_blank: true %>
+   </p>
+   <p>
+   <%= f.label :check_in_date %>
+   <%= f.date_field :check_in_date%>
+   </p>
+   <p>
+   <%= f.label :check_out_date %>
+   <%= f.date_field :check_out_date%>
+   </p>
+
+   <%= f.submit %>
+<% end %>
